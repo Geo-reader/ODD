@@ -1,5 +1,4 @@
 # ODD
-Our package aims to provide a set of 3D parallel simulation schemes based on the optimal decomposition strategies for acoustic and elastic wave equations.
 ---
 title: Manual of code package
 date: 2018-06-20
