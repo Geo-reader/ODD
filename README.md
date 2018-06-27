@@ -1,4 +1,3 @@
-# ODD
 ---
 title: Manual of code package
 date: 2018-06-20
