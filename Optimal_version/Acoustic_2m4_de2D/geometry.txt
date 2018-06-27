@@ -1,0 +1,9 @@
+--- shots x-axis position (m)----
+    500 
+--- shots y-axis position (m)----
+    500
+--- shots depth (m)----
+    30 
+--- receiver receiving plane depth (m)---
+    30 
+
