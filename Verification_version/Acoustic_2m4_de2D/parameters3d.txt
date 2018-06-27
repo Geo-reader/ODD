@@ -1,0 +1,36 @@
+--recording time (s)
+  0.5
+--time sample (ms)
+  1.0
+--Riker wavelet domiant frequency (Hz)
+  15
+--shot number
+  1
+--x grid interval (m)
+  10
+--y grid interval (m)
+  10
+--z grid interval (m)
+  10
+--x grid number
+  512
+--y grid number
+  512
+--z grid number
+  512
+--FD order for x derivative
+  2
+--FD order for y derivative
+  2
+--FD order for z derivative
+  2
+--split in x direction
+
+  4
+--split in y direction
+
+  4
+--shared file path
+  ./output/
+--velocity-density filepath
+  ./input/
