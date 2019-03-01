@@ -10,19 +10,17 @@ mathjax: true
 
 The domain decomposition strategies include decomposition direction and decomposition dimension. As a matter of fact, domain decomposition strategies can significantly affect the computational performance. More specifically, decomposition direction determines the cache hit ratio during register addressing, while decomposition dimension controls the load balance and communication among each node.
 
-In this paper, we consider three domain decomposition schemes: 1D decomposition perpendicular to the fastest dimension (denoted as 1D_f), 1D decomposition perpendicular to the slowest dimension (denoted as 1D_s), 2D decomposition perpendicular to the slowest and the second slowest dimensions. The slowest dimension is the dimension that data are continuously stored. The comparison of 1D_f decomposition method and 1D_s decomposition method is designed to illustrate the effect of decomposition direction on computational efficiency; and the comparison of 1D_s decomposition method and 2D decomposition method is designed to illustrate the effect of decomposition dimension on computational efficiency.
+In this paper, we consider three domain decomposition schemes: 1D decomposition perpendicular to the fastest dimension (denoted as 1D_f), 1D decomposition perpendicular to the slowest dimension (denoted as 1D_s), 2D decomposition perpendicular to the fastest and the second fastst dimensions. The fastest dimension is the dimension that data are continuously stored. The comparison of 1D_f decomposition method and 1D_s decomposition method is designed to illustrate the effect of decomposition direction on computational efficiency; and the comparison of 1D_f decomposition method and 2D decomposition method is designed to illustrate the effect of decomposition dimension on computational efficiency.
 
-Conclusions about the impact of domain decomposition strategy on parallel computational performance are drawn via theoretical analysis and verification of four metrics including computation time, speedup ratio, strong scaling property and memory usage. They can be summarized as follows. First, decomposition direction has a dramatic influence on compute time, speedup ratio and strong scaling property. It should be given priority to decompose the model perpendicular to the slowest dimension, in which data are continuously saved. Second, the impact of decomposition dimension is more evident in the fine-grained parallelism. Two-dimensional domain decomposition performs better when the model is finely decomposed. Third, compared to the 1D domain decomposition, 2D domain decomposition can make more efficient use of memory. In general, 2D domain decomposition of the model is a better choice in most cases.
+Conclusions about the impact of domain decomposition strategy on parallel computational performance are drawn via theoretical analysis and verification of four metrics including computation time, speedup ratio, strong scaling property and memory usage. They can be summarized as follows. First, decomposition direction has a dramatic influence on compute time, speedup ratio and strong scaling property. It should be given priority to decompose the model perpendicular to the fastest dimension, in which data are continuously saved. Second, the impact of decomposition dimension is more evident in the fine-grained parallelism. Two-dimensional domain decomposition performs better when the model is finely decomposed. Third, compared to the 1D domain decomposition, 2D domain decomposition can make more efficient use of memory. In general, 2D domain decomposition of the model is a better choice in most cases.
 
 ## The architecture of code package 
 
-Our package aims to provide a set of 3D parallel simulation schemes based on the optimal decomposition strategies for acoustic and elastic wave equations. Three scenarios based on optimized 2D decomposition scheme are included in the `Optimal version` of our package.
-
-1. **Acoustic_2m4_de2D** is used to run the time-space-domain high-order (2M, 4) acoustic simulation based on the optimized 2D decomposition scheme. 
+Our package aims to provide a set of 3D parallel simulation schemes based on the optimal decomposition strategies for acoustic and elastic wave equations. Two scenarios based on optimized 2D decomposition scheme are included in the `Optimal version` of our package.
    
-2. **Acoustic_2m2_de2D** is used to run the traditional (2M, 2) acoustic simulation based on the optimized 2D decomposition scheme.
+1. **Acoustic_2m2_de2D** is used to run the traditional (2M, 2) acoustic simulation based on the optimized 2D decomposition scheme.
    
-3. **Elastic_2m2_de2D** is used to run the traditional (2M, 2) elastic simulation based on the optimized 2D decomposition scheme.
+2. **Elastic_2m2_de2D** is used to run the traditional (2M, 2) elastic simulation based on the optimized 2D decomposition scheme.
 
 If you want to verify the conclusions about domain decomposition strategies, we also provide a `Verification version`, which is consisted of following three scenarios.  
 
@@ -32,7 +30,7 @@ If you want to verify the conclusions about domain decomposition strategies, we 
 
 3. **Acoustic_2m4_de1D_s** is used to run the time-space-domain high-order (2M, 4) acoustic simulation. The model is decomposed perpendicular to the slowest dimension.
 
-Next, we take the **Acoustic_2m4_de2D** as an example to outline the architect of our code. 
+Next, we take the **Acoustic_2m2_de2D** as an example to outline the architect of our code. 
 
 -   `input`: scripts for generating and decomposing models of velocity and density:
     - `gene_models.m`: generating velocity and density models;
@@ -57,7 +55,7 @@ our package is developed under `Linux` system, which should be equipped with the
 
 ## How to run this package
 
-We use **Acoustic_2m4_de2D** as an example to demonstrate how to run this package. If you want to quick test this package, you can generate a small 3D model with the size of 101^3 in `Optimal version` of our package. 
+We use **Acoustic_2m2_de2D** as an example to demonstrate how to run this package. If you want to quick test this package, you can generate a small 3D model with the size of 101^3 in `Optimal version` of our package. 
 
 - Step 1: Run the matlab file `gene_models.m` in `./input` to generate velocity and density models;
 - Step 2: Run the `split.cpp` in `./input` to decompose the velocity and the density models. The `Makefile` is written as  
@@ -70,7 +68,7 @@ all:
 	icc -w -o spl split.cpp -lm
 	./spl
 ```
-- Step 3: Run the `Acoustic_2m4_de2D.c`. The `Makefile` is written as
+- Step 3: Run the `Acoustic_2m2_de2D.c`. The `Makefile` is written as
 ``` bash
 #!/bin/sh
 
@@ -80,7 +78,7 @@ all:
 	mpicc -o ac Acoustic_2m2_de2D.c -lm -fopenmp
 	nohup mpirun -f mpd.hosts -np 4 ./ac &
 ```
-- Step 4: When the `Acoustic_2m4_de2D.c` is executed, view the time-consuming by the command line: `vi nohup`
+- Step 4: When the `Acoustic_2m2_de2D.c` is executed, view the time-consuming by the command line: `vi nohup`
 
 - Step 5: Run the `splice.cpp` in `./output` to splice the sub-seismograms. The `Makefile` is written as  
 ``` bash
@@ -114,7 +112,7 @@ I am Ning Wang, a PhD candidate from China University of Petroleum, Beijing. If 
 ## Copyright
 
  
-Copyright (C) 2018  China University of Petroleum, Beijing (Ning Wang)
+Copyright (C) 2019  China University of Petroleum, Beijing (Ning Wang)
 
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
