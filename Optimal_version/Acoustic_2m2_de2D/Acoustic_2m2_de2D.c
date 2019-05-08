@@ -1,18 +1,19 @@
 /* 
-3D acoustic modeling using MPI spliting x and y directions(optimal domain decomposition method)
+3D acoustic modeling using MPI spliting x and y directions(optimized domain decomposition method)
 (2M,2) SGFD scheme
 
 Coordinate configuration of seismic data:
  is=iz*ny*nx+iy*nx+ix;
- The fast dim:        *.z
- The second fast dim: *.y
- The slowest dim:     *.x
+ The fastest dim:        *.x
+ The second fastest dim: *.y
+ The slowest dim:        *.z
  
-
- Copyright (C) 2017  China University of Petroleum-Beijing (Ning Wang)
- Email: wangn2311@163.com	    
+	    
 
  Acknowledgement:
+
+   Copyright (C) 2019 China University of Petroleum, Beijing
+   Copyright (C) 2019 Ning Wang
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -22,11 +23,7 @@ Coordinate configuration of seismic data:
   This program is distributed in the hope that it will be useful,
   but WITHOUT ANY WARRANTY; without even the implied warranty of
   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-  GNU General Public License for more details.
-
-  You should have received a copy of the GNU General Public License
-  along with this program; if not, write to the Free Software
-  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+  GNU General Public License for more details: http://www.gnu.org/licenses/
 
 */
 
@@ -371,7 +368,8 @@ void forward3d_c(int sizex,int sizey,int nz,int tmax,float dx,float dy,float dz,
 
 	float *rec;
 	rec=(float*)malloc(sizeof(float)*xef*yef);
-
+
+
 
 	// define nearby process
 	int tagx1=1,tagx2=2,tagx3=3,tagx4=4;
