@@ -24,15 +24,11 @@
   2
 --FD order for z derivative
   2
---split in x direction
-
+--split in x direction（the number of subdomains at x- axis）
   16
-
---split in y direction
-
+--split in y direction（the number of subdomains at y- axis）
   1
-
---shared file path
+--shared file path（path to save seismic record）
   ./output/
---velocity-density filepath
+--velocity-density filepath（path to read the velocity& density）
   ./input/
