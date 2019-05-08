@@ -67,6 +67,10 @@ We use **Acoustic_2m2_de2D** as an example to demonstrate how to run this packag
 all:
 	icc -w -o spl split.cpp -lm
 	./spl
+# Note that above compile instructions are suitable for the icc compiler, and the compile instructions #for the gcc compiler are
+#	gcc -w -o spl split.cpp -lm
+#	./spl	
+	
 ```
 - Step 3: Run the `Acoustic_2m2_de2D.c`. The `Makefile` is written as
 ``` bash
@@ -77,6 +81,13 @@ all:
 all:
 	mpicc -o ac Acoustic_2m2_de2D.c -lm -fopenmp
 	nohup mpirun -f mpd.hosts -np 4 ./ac &
+	
+## if the Inter compiler has not installed, the instruction is :
+# 	$(MPICC) $(srcfile) -I$(IncludeDir) -I$(lib) -L$(MpiLibDir) -o $(exe) -lm -fopenmp
+#run:
+#	nohup $(MPIRUN) -np $(num_process) -machinefile $(MachineFile) $(exe) &
+# Note taht you should replace the folder path with your own envirment path	
+	
 ```
 - Step 4: When the `Acoustic_2m2_de2D.c` is executed, view the time-consuming by the command line: `vi nohup`
 
@@ -89,6 +100,10 @@ all:
 all:
 	icc -w -o spli splice.cpp -lm
 	./spli
+# Note that above compile instructions are suitable for the icc compiler, and the compile instructions #for the gcc compiler are
+#	gcc -w -o spli splice.cpp -lm
+#	./spli	
+	
 ```
 - Step 6: Run the `plot_rec.m` in `./output` to plot the seismic record.
 
