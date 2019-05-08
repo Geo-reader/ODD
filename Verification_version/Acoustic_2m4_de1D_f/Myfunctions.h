@@ -1,7 +1,7 @@
 void input_parameters(float *rectime,float *dt,float *fm,int *shotnum,float *dx,
-		      float *dy,float *dz,int *nxo,int *nyo,int *nzo,int *Lx,
-		      int *Ly,int *Lz,
-		      int *numx,int *numy,char filepathv[40],
+		              float *dy,float *dz,int *nxo,int *nyo,int *nzo,int *Lx,
+		              int *Ly,int *Lz,
+		              int *numx,int *numy,char filepathv[40],
                       char filepathr[40]);
 
 void split_domains(int nx,int ny,int nxo,int nyo,int Lx,int Ly,int nz,int Lz,int myid,
@@ -27,26 +27,23 @@ void cal_pml_parameters(float *i_a_x,float *i_b_x,float *h_a_x,float *h_b_x,
 
 void num2str(char asc[6],int);
 
-
 void input_shotsposition(int shotnum,float dx,float dy,float dz,int *shotxg,
 			 int *shotyg,int *shotzg,int *recg);
 
 
 void forward3d_c(int sizex,int sizey,int nz,int tmax,float dx,float dy,float dz,float dt,
-           float vpmin,float dv,float *Gp,float *vp,float *dens,
+	       float vpmin,float dv,float *Gp,float *vp,float *dens,
 	       int xl,int xr,int yl,int yr,int zu,int zd,int insizex,int insizey,
 	       int nxo,int nyo,int nzo, int *shotxlc,int *shotylc,int *shotzlc,
-               int recg,int *flagshots,float *i_ax,float *i_bx,float *h_ax,float *h_bx,
+           int recg,int *flagshots,float *i_ax,float *i_bx,float *h_ax,float *h_bx,
 	       float *i_ay,float *i_by,float *h_ay,float *h_by,
 	       float *i_a_z,float *i_b_z,float *h_a_z,float *h_b_z,
-	       float fm,int n,int xef,int yef,int zef,int Lpx,int Lpy,int Lpz,int Nf,
-	       int Lx,int Ly,int Lz,
+	       float fm,int n,int xef,int yef,int zef,int Lpx,int Lpy,int Lpz,int Nf,int Lx,int Ly,int Lz,
 	       int idx,int idy,int myid,int numx,int numy,float *p,float *vx,float *vy,
-               float *vz,float *fi_px,float *fi_py,float *fi_pz,float *fi_vx,
-	       float *fi_vy,float *fi_vz,int numprocs,
-	       int offsetrowxn,int offsetrowyn,char filepathr[40]);
+           float *vz,float *fi_px,float *fi_py,float *fi_pz,float *fi_vx,
+	       float *fi_vy,float *fi_vz,int numprocs,int offsetrowxn,int offsetrowyn,char filepathr[40]);
 	       
 void get_max_min(float *vpo,int N,float *vpmax,float *vpmin);
-void TE_2M4_3dxyz(float vpmin,float dv,int N,int Lx,float dt,float dx,float dy,float dz,float *Gp);
-void cal_xishur(int Lx,float *rx,float gam);  
 
+void TE_2M4_3dxyz(float vpmin,float dv,int N,int Lx,float dt,float dx,float dy,float dz,float *Gp);
+void cal_xishur(int Lx,float *rx,float gam);
